@@ -13,25 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Meu primeiro App Flutter'),
     );
   }
 }
@@ -55,16 +40,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _counter_add = 0;
+  int _counter_remove = 0;
 
-  void _incrementCounter() {
+  void _increment_decrement() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter_add++;
+      _counter_remove--;
     });
   }
 
@@ -106,19 +93,24 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Clique no botão para aumentar / diminuir ao mesmo tempo',
             ),
             Text(
-              '$_counter',
+              '$_counter_add',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Text(
+              '$_counter_remove',
+              style: Theme.of(context).textTheme.headlineMedium,
+            )
           ],
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: _increment_decrement,
+        tooltip: 'Increment/Decrement',
+        child: const Icon(Icons.add_reaction),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
